@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@twilio-paste/color-contrast-utils": "^1.1.0",
     "@twilio-paste/core": "^9.1.0",
     "@twilio-paste/icons": "^5.2.0",
     "react": "^17.0.2",
