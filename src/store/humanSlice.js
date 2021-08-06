@@ -22,16 +22,23 @@ export const humanSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(taskSlice.actions.assignToUser, (state, action) => {
-      for (const human of state) {
-        if (human.id === action.payload.humanId) {
-          human.taskIds.push(action.payload.taskId);
-        } else {
-          human.taskIds = human.taskIds.filter(
-            (id) => id !== action.payload.taskId
-          );
+    builder
+      .addCase(taskSlice.actions.assignToUser, (state, action) => {
+        for (const human of state) {
+          if (human.id === action.payload.humanId) {
+            human.taskIds.push(action.payload.taskId);
+          } else {
+            human.taskIds = human.taskIds.filter(
+              (id) => id !== action.payload.taskId
+            );
+          }
         }
-      }
-    });
+      })
+      .addCase(taskSlice.actions.remove, (state, action) => {
+        for (const human of state) {
+          human.taskIds.filter((id) => id !== action.payload.taskId);
+          console.log(human);
+        }
+      });
   }
 });
