@@ -34,10 +34,11 @@ export const humanSlice = createSlice({
           }
         }
       })
-      .addCase(taskSlice.actions.remove, (state, action) => {
+      .addCase(taskSlice.actions.toggle, (state, action) => {
         for (const human of state) {
-          human.taskIds.filter((id) => id !== action.payload.taskId);
-          console.log(human);
+          human.taskIds = human.taskIds.filter(
+            (id) => id !== action.payload.taskId
+          );
         }
       });
   }

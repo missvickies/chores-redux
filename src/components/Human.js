@@ -1,6 +1,7 @@
 import { Card } from '@twilio-paste/card';
 import { Stack } from '@twilio-paste/stack';
 import { useSelector } from 'react-redux';
+import { taskSlice } from '../store/taskSlice';
 import { Task } from './Task';
 
 export const Human = ({ humanId }) => {

@@ -1,7 +1,7 @@
 import { Box } from '@twilio-paste/box';
 import { Select, Option } from '@twilio-paste/select';
 import { useDispatch, useSelector } from 'react-redux';
-import { taskSlice } from '../store/taskSlice';
+import { assignTask, taskSlice } from '../store/taskSlice';
 
 export const SelectHuman = ({ task }) => {
   const dispatch = useDispatch();
@@ -13,12 +13,7 @@ export const SelectHuman = ({ task }) => {
         className="SelectHuman"
         value={task.assignedTo}
         onChange={(event) => {
-          dispatch(
-            taskSlice.actions.assignToUser({
-              humanId: event.target.value,
-              taskId: task.id
-            })
-          );
+          dispatch(assignTask(event.target.value, task.id));
         }}
       >
         <Option>(Unassigned)</Option>

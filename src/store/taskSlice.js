@@ -20,7 +20,7 @@ export const taskSlice = createSlice({
       state.push(createTask(action.payload));
     },
     remove: (state, action) => {
-      return state.filter((task) => task.id !== action.payload.taskId);
+      return state.filter((task) => task.completed === false);
     },
     toggle: (state, action) => {
       const task = state.find((task) => task.id === action.payload.taskId);
@@ -33,10 +33,17 @@ export const taskSlice = createSlice({
   }
 });
 
-export const toggleTask = createAction('tasks/toggle', (taskId) => ({
-  payload: { taskId }
-}));
-
-export const removeTask = createAction('tasks/remove', (taskId, completed) => ({
+export const toggleTask = createAction('tasks/toggle', (taskId, completed) => ({
   payload: { taskId, completed }
 }));
+
+export const removeTask = createAction('tasks/remove', () => ({
+  payload: {}
+}));
+
+export const assignTask = createAction(
+  'tasks/assignToUser',
+  (humanId, taskId) => ({
+    payload: { humanId, taskId }
+  })
+);
